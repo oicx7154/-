@@ -352,8 +352,6 @@ itemLoot:AddToggle("捡箱子",{
                 end
             end)
         else
-            Fucking = nil
-            Fucking:Disconnect()
             Need:Disconnect()
             Need = nil
         end
