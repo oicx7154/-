@@ -41,13 +41,13 @@ local idk = {
     ["Paper Curse Quarter"] = "小小纸张",
 }
 local boss = {
-    ["Jotaro Kujo"] = "",
-    ["Mimicry"] = "",
+    ["Jotaro Kujo"] = "空条承太郎",
+    ["Mimicry"] = "模仿者",
     ["Menos"] = "大诅咒",
-    ["Spider Curse"] = "",
-    ["Adjuchas"] = "",
+    ["Spider Curse"] = "失败的man",
+    ["Adjuchas"] = "亚丘卡斯",
     ["Toji"] = "甚尔",
-    ["The Red Mist"] = "",
+    ["The Red Mist"] = "红雾",
     ["Deku"] = "绿谷",
     ["Roland"] = "罗兰",
 }
@@ -311,6 +311,27 @@ GroupBox.Kill:AddToggle("秒杀boss",{
             Kill:Disconnect()
             Kill = nil
             end
+        end
+    end
+})
+itemLoot:AddToggle("捡箱子",{
+    Text = "捡箱子",
+    Default = false,
+    Callback = function(v)
+        if v then
+            FUCKINGBICH = RunService.RenderStepped:Connect(function()
+                for _, v in ipairs(Workspace.Item:GetChildren()) do
+                    if v.Name == "Box" and v:IsA("Part") then
+                        task.wait(2)
+                        HumanoidRootPart.CFrame = v.CFrame
+                        task.wait(0.5)
+                        fireproximityprompt(v.ProximityPrompt)
+                    end
+                end
+            end)
+        else
+            FUCKINGBICH:Disconnect()
+            FUCKINGBICH = nil
         end
     end
 })
