@@ -341,21 +341,13 @@ itemLoot:AddToggle("捡箱子",{
     Default = false,
     Callback = function(v)
         if v then
-        Fucking = Workspace.Item.ChildAdded:Connect(function(v)
-            if v.Name == "Box" and v:IsA("Part") then
-                task.wait(2)
-                HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0,3,0)
-                task.wait(0.3)
-                fireproximityprompt(v.ProximityPrompt)
-            end
-        end)
         Need =  pcall(function()
-            for _,v in ipairs(Workspace.Item:GetChildren()) do
+            for _,v in ipairs(Workspace.Item:GetDescendants()) do
                 if v.Name == "Box" and v:IsA("Part") then
                     task.wait(2)
-                    HumanoidRootPart.CFrame = v.CFrame+ Vector3.new(0,3,0)
+                    HumanoidRootPart.CFrame = v.Box.CFrame+ Vector3.new(0,3,0)
                     task.wait(0.3)
-                    fireproximityprompt(v.ProximityPrompt)
+                    fireproximityprompt(v.Box.ProximityPrompt)
                     end
                 end
             end)
