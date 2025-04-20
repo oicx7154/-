@@ -319,6 +319,14 @@ itemLoot:AddToggle("捡箱子",{
     Default = false,
     Callback = function(v)
         if v then
+        Fucking = Workspace.Living.ChildAdded:Connect(function(v)
+            if v.Name == "Box" and v:IsA("Part") then
+                task.wait(2)
+                HumanoidRootPart.CFrame = v.CFrame
+                task.wait(0.3)
+                fireproximityprompt(v.ProximityPrompt)
+            end
+        end)
         Need =  pcall(function()
             for _,v in ipairs(Workspace.Item:GetChildren()) do
                 if v.Name == "Box" and v:IsA("Part") then
@@ -332,6 +340,8 @@ itemLoot:AddToggle("捡箱子",{
                 end
             end)
         else
+            Fucking = nil
+            Fucking:Disconnect()
             Need:Disconnect()
             Need = nil
         end
