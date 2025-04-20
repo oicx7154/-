@@ -7,6 +7,7 @@ local VirtualUser = game:GetService("VirtualUser")
 local UserInputService = game:GetService("UserInputService")
 local Masterr = ReplicatedStorage:WaitForChild("GlobalUsedRemotes"):WaitForChild("UpgradeMas")
 local HumanoidRootPart = LocalPlayer.Character.HumanoidRootPart
+
 local Need
 local Need2
 local Need3
@@ -314,16 +315,16 @@ GroupBox.Kill:AddToggle("秒杀boss",{
         end
     end
 })
-itemLoot:AddToggle("捡箱子",{
-    Text = "捡箱子",
+itemLoot:AddToggle("捡箱子(old)",{
+    Text = "捡箱子(old)",
     Default = false,
     Callback = function(v)
         if v then
             FUCKINGBICH = RunService.RenderStepped:Connect(function()
-                for _, v in ipairs(Workspace.Item:GetChildren()) do
+                for _, v in pairs(Workspace.Item:GetChildren()) do
                     if v.Name == "Box" and v:IsA("Part") then
                         task.wait(2)
-                        HumanoidRootPart.CFrame = v.CFrame
+                        HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0,3,0)
                         task.wait(0.5)
                         fireproximityprompt(v.ProximityPrompt)
                     end
@@ -343,7 +344,7 @@ itemLoot:AddToggle("捡箱子",{
         Fucking = Workspace.Item.ChildAdded:Connect(function(v)
             if v.Name == "Box" and v:IsA("Part") then
                 task.wait(2)
-                HumanoidRootPart.CFrame = v.CFrame
+                HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0,3,0)
                 task.wait(0.3)
                 fireproximityprompt(v.ProximityPrompt)
             end
@@ -352,7 +353,7 @@ itemLoot:AddToggle("捡箱子",{
             for _,v in ipairs(Workspace.Item:GetChildren()) do
                 if v.Name == "Box" and v:IsA("Part") then
                     task.wait(2)
-                    HumanoidRootPart.CFrame = v.CFrame
+                    HumanoidRootPart.CFrame = v.CFrame+ Vector3.new(0,3,0)
                     task.wait(0.3)
                     fireproximityprompt(v.ProximityPrompt)
                     end
