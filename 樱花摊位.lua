@@ -1,4 +1,5 @@
 --Make By AC
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/refs/heads/main/Library.lua"))()
 if game.PlaceId == 8534845015 then
     local ReplicatedStorage = game:GetService("ReplicatedStorage")
     local Workspace = game:GetService("Workspace")
@@ -10,14 +11,17 @@ if game.PlaceId == 8534845015 then
     local Masterr = ReplicatedStorage:WaitForChild("GlobalUsedRemotes"):WaitForChild("UpgradeMas")
     local Masteryr = ReplicatedStorage:WaitForChild("GlobalUsedRemotes"):WaitForChild("Breakthrough")
 
-    local Need
-    local Need2
-    local Need3
+    local BarrelLoot
     local Need4
+    local CityEggLoot1
+    local KuzmaEggLoot
+    local EggLoot
+
 
     local Noclipping = nil
     local Master = false
     local KillAnimCash = false
+    local AutoSellFruit = false
     local AutoSell = false
     local KillAnimToken = false
     local Maste = false
@@ -41,7 +45,7 @@ if game.PlaceId == 8534845015 then
         ["Glutton Curse"] = "诅咒",
         ["Paper Curse"] = "纸张",
         ["Mosquito Curse"] = "诅咒",
-        ["Thug"] = "人",
+        ["Thug"] = "恶棍",
         ["Contorted Curse"] = "诅咒",
         ["Bandit"] = "恶棍", 
         ["Paper Curse Half"] = "小纸张",
@@ -95,7 +99,6 @@ if game.PlaceId == 8534845015 then
 
         return Highlight, BillboardGui
     end
-
     local function NoclipLoop()
         if Clip == false and LocalPlayer.Character ~= nil then
             for _, v in pairs(LocalPlayer.Character:GetDescendants()) do
@@ -126,7 +129,6 @@ if game.PlaceId == 8534845015 then
     end
     local ThemeManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/refs/heads/main/addons/ThemeManager.lua"))()
     local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/refs/heads/main/addons/SaveManager.lua"))()
-    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/refs/heads/main/Library.lua"))()
     local Options = Library.Options
     Library.IsMobile = false
     if UserInputService.TouchEnabled and not UserInputService.KeyboardEnabled and not UserInputService.MouseEnabled then
@@ -145,22 +147,23 @@ if game.PlaceId == 8534845015 then
         Icon = 73663200681073,
         AutoShow = true
     })
-    Library:Notify({
+    local Notification = Library:Notify({
         Title = "通知",
         Description = "推荐私服",
-        Time = 5
+        Time = 5,
+        SoundId = 8486683243
     })
     local Tab = {
         MaxinTab = Window:AddTab("主页","tablet"),
         PlayerTab = Window:AddTab("人物功能","user"),
         MainTab = Window:AddTab("功能", "airplay"),
+        RollAnim = Window:AddTab("抽奖","aperture"),         
         PlayerData = Window:AddTab("玩家数据","user"),
-        RollAnim = Window:AddTab("抽奖","aperture"), 
         ["设置"] = Window:AddTab("设置", "settings"),
     }
     local GroupBox = {
         MaxinTab = Tab.MaxinTab:AddLeftGroupbox("主要"),
-        Kill = Tab.MainTab:AddLeftGroupbox("杀戮光环"),
+        Kill = Tab.MainTab:AddLeftGroupbox("杀戮光环"), 
         Mastery = Tab.MainTab:AddLeftGroupbox("精通"),
         PlayersFunction = Tab.PlayerTab:AddLeftGroupbox("玩家速度"),
         PlayerData = Tab.PlayerData:AddLeftGroupbox("玩家数据"),
@@ -172,26 +175,30 @@ if game.PlaceId == 8534845015 then
 
     }
     local Label = {
+        PlayerName = GroupBox.PlayerData:AddLabel("玩家名字: "..LocalPlayer.Name),
         Mastery = GroupBox.PlayerData:AddLabel("玩家精通: "..LocalPlayer.Data.Mastery.Value),
+        Breakthrough = GroupBox.PlayerData:AddLabel("玩家突破: "..LocalPlayer.Data.Breakthrough.Value),
         Token = GroupBox.PlayerData:AddLabel("玩家红币: "..LocalPlayer.Data.Token.Value),
-        Fingers = GroupBox.PlayerData:AddLabel("玩家手指: "..LocalPlayer.Data.Fingers.Value),
         Cash = GroupBox.PlayerData:AddLabel("玩家马内: "..LocalPlayer.Data.Cash.Value),
-        Soul = GroupBox.PlayerData:AddLabel("玩家灵魂: "..LocalPlayer.Data.Soul.Value),
-        Worth = GroupBox.PlayerData:AddLabel("玩家荣誉: "..LocalPlayer.Data.Worth.Value),
         BP = GroupBox.PlayerData:AddLabel("玩家BP: "..LocalPlayer.Data.BP.Value),
-        Breakthrough = GroupBox.PlayerData:AddLabel("玩家突破: "..LocalPlayer.Data.Breakthrough.Value)
+        Fingers = GroupBox.PlayerData:AddLabel("玩家手指: "..LocalPlayer.Data.Fingers.Value),
+        Worth = GroupBox.PlayerData:AddLabel("玩家荣誉: "..LocalPlayer.Data.Worth.Value),
+    }
+    local Label2 = {
+        GroupBox.MaxinTab:AddLabel("作者: AC"),
+        GroupBox.MaxinTab:AddDivider(),
+        GroupBox.MaxinTab:AddLabel("更新内容："),
+        GroupBox.MaxinTab:AddLabel("1.添加了捡蛋"),
+        GroupBox.MaxinTab:AddLabel("2.添加了新boss的兼容"),
+        GroupBox.MaxinTab:AddLabel("3.修复了一些bug"),
+        GroupBox.MaxinTab:AddLabel("4.新增了皮肤类"),
+        GroupBox.MaxinTab:AddLabel("5.新增自动突破"),
+        GroupBox.MaxinTab:AddLabel("6.新增NPC传送跟地图传送"),
     }
     local itemloot = Tab.MainTab:AddRightTabbox()
     local itemLoot = itemloot:AddTab("物品掉落")
     local Fast = itemloot:AddTab("快速区")
-    GroupBox.MaxinTab:AddLabel("作者: AC")
-    GroupBox.MaxinTab:AddDivider()
-    GroupBox.MaxinTab:AddLabel("更新内容：")
-    GroupBox.MaxinTab:AddLabel("1.添加了捡蛋")
-    GroupBox.MaxinTab:AddLabel("2.添加了新boss的兼容")
-    GroupBox.MaxinTab:AddLabel("3.修复了一些bug")
-    GroupBox.MaxinTab:AddLabel("4.新增了皮肤类")
-    GroupBox.MaxinTab:AddLabel("5.新增自动突破")
+
     GroupBox.PlayersFunction:AddToggle("开启玩家速度",{
         Text = "开启玩家速度",
         Default = false,
@@ -320,8 +327,7 @@ if game.PlaceId == 8534845015 then
                 if boss[v.Name] then
                     local dis = (LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude
                     if dis <= DIs then
-                        if v:FindFirstChild("Humanoid") then
-                            task.wait(2)
+                            if v:FindFirstChild("Participated") and v.Participated:FindFirstChild(LocalPlayer.Name) then
                             v.Humanoid.Health = 0
                                 end
                             end
@@ -368,7 +374,6 @@ if game.PlaceId == 8534845015 then
         Numeric = true,
         Placeholder = "输入数字",
         Callback = function(Value)
-            print("等待时间 = " .. Value)
             Waittime = Value
         end
     })
@@ -423,21 +428,32 @@ if game.PlaceId == 8534845015 then
         Default = false,
         Callback = function(v)
             if v then
-                Need2 = pcall(function()
-                for _, v in ipairs(Workspace.Item:GetDescendants()) do
-                    if v:FindFirstChild("SukunaFinger")then
-                    task.wait(Waittime)
-                    LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0,2.5,0)
-                    task.wait(0.3)
-                    fireproximityprompt(v.ProximityPrompt)
-                    else
-                        return
-                        end
+                FingerLoot = Workspace.Item.ChildAdded:Connect(function(v)
+                    local oldFrame = LocalPlayer.Character.HumanoidRootPart.CFrame
+                    if v.Name == "SukunaFinger" and v:IsA("Part") then
+                        task.wait(Waittime)
+                        LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0,2.5,0)
+                        task.wait(0.2)
+                        fireproximityprompt(v.ProximityPrompt)
+                        task.wait(0.3)
+                        LocalPlayer.Character.HumanoidRootPart.CFrame = oldFrame
                     end
                 end)
-        else
-            Need2:Disconnect()
-            Need2 = nil
+                for _,v in ipairs(Workspace.Item:   GetChildren()) do
+                    local oldFrame = LocalPlayer.Character.HumanoidRootPart.CFrame
+                    if v.Name == "SukunaFinger" and v:IsA("Part") then
+                        task.wait(Waittime)
+                        LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0,2.5,0)
+                        task.wait(0.2)
+                        fireproximityprompt(v.ProximityPrompt)
+                        task.wait(0.3)
+                        LocalPlayer.Character.HumanoidRootPart.CFrame = oldFrame
+
+                    end
+                end
+            else
+                FingerLoot:Disconnect()
+                FingerLoot = nil
             end
         end
     })
@@ -448,11 +464,14 @@ if game.PlaceId == 8534845015 then
             if v then
                 BarrelLoot = RunService.RenderStepped:Connect(function()
                 for _, v in ipairs(Workspace.Item:GetChildren()) do
+                    local oldFrame = LocalPlayer.Character.HumanoidRootPart.CFrame
                     if v.Name == "Barrel" and v:IsA("Part")then
                     task.wait(Waittime)
                     LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0,2.5,0)
-                    task.wait(0.3)
+                    task.wait(0.2)
                     fireproximityprompt(v.ProximityPrompt)
+                    task.wait(0.3)
+                    LocalPlayer.Character.HumanoidRootPart.CFrame = oldFrame
                     else
                         return
                     end
@@ -476,16 +495,18 @@ if game.PlaceId == 8534845015 then
                         LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0,2.5,0)
                         task.wait(0.3)
                         fireproximityprompt(v.ProximityPrompt)
+                        task.wait(0.4)
                         LocalPlayer.Character.HumanoidRootPart.CFrame = oldFrame
                     end
                 end)
                 for _,v in ipairs(Workspace.Item:GetChildren()) do
                     local oldFrame = LocalPlayer.Character.HumanoidRootPart.CFrame
-                    if v:FindFirstChild("Egg")then
+                    if v.Name == "Silver Egg" and v:IsA("Part") then
                         task.wait(Waittime)
-                        LocalPlayer.Character.HumanoidRootPart.CFrame = v.Egg.CFrame + Vector3.new(0,2.5,0)
+                        LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0,2.5,0)
                         task.wait(0.3)
-                        fireproximityprompt(v.Egg.Parent.ProximityPrompt)
+                        fireproximityprompt(v.ProximityPrompt)
+                        task.wait(0.4)
                         LocalPlayer.Character.HumanoidRootPart.CFrame = oldFrame
 
                     end
@@ -493,6 +514,64 @@ if game.PlaceId == 8534845015 then
             else
                 EggLoot:Disconnect()
                 EggLoot = nil
+            end
+        end
+    })
+    itemLoot:AddToggle("捡任务蛋(城市)",{
+        Text = "捡任务蛋(城市)",
+        Default = false,
+        Callback = function(v)
+            if v then
+                CityEggLoot1 = RunService.RenderStepped:Connect(function()
+                for _,v in ipairs(Workspace.Map.EggLocation.City:GetChildren()) do
+                    local oldFrame = LocalPlayer.Character.HumanoidRootPart.CFrame
+                    if v.Name == "Egg"then
+                        if v.Transparency == 0 then
+                        task.wait(Waittime)
+                        LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0,2.5,0)
+                        task.wait(0.3)
+                        fireproximityprompt(v.ProximityPrompt)
+                        task.wait(1)
+                        LocalPlayer.Character.HumanoidRootPart.CFrame = oldFrame
+                        else
+                            CityEggLoot1:Disconnect()
+                            CityEggLoot1 = nil
+                        end
+                    end
+                end
+            end)
+            else
+                CityEggLoot1:Disconnect()
+                CityEggLoot1 = nil 
+            end
+        end
+    })
+    itemLoot:AddToggle("捡任务蛋(Kuzma)",{
+        Text = "捡任务蛋(Kuzma)",
+        Default = false,
+        Callback = function(v)
+            if v then
+                KuzmaEggLoot = RunService.RenderStepped:Connect(function()
+                for _,v in ipairs(Workspace.Map.Kuzma.City:GetChildren()) do
+                    local oldFrame = LocalPlayer.Character.HumanoidRootPart.CFrame
+                    if v.Name == "Egg"then
+                        if v.Transparency == 0 then
+                        task.wait(Waittime)
+                        LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0,2.5,0)
+                        task.wait(0.3)
+                        fireproximityprompt(v.ProximityPrompt)
+                        task.wait(1)
+                        LocalPlayer.Character.HumanoidRootPart.CFrame = oldFrame
+                        else
+                            KuzmaEggLoot:Disconnect()
+                            KuzmaEggLoot = nil
+                        end
+                    end
+                end
+            end)
+            else
+                KuzmaEggLoot:Disconnect()
+                KuzmaEggLoot = nil
             end
         end
     })
@@ -555,10 +634,26 @@ if game.PlaceId == 8534845015 then
                         ReplicatedStorage:WaitForChild("GlobalUsedRemotes"):WaitForChild("SellItem"):FireServer("Hamon Manual")
                         ReplicatedStorage:WaitForChild("GlobalUsedRemotes"):WaitForChild("SellItem"):FireServer("Rokakaka")
                         ReplicatedStorage:WaitForChild("GlobalUsedRemotes"):WaitForChild("SellItem"):FireServer("Arrow")
-                        task.wait(1)
                     end
             else
                 AutoSell = false
+            end
+        end
+    })
+    Fast:AddToggle("快速出售果实", {
+        Text = "快速出售果实",
+        Default = false,
+        Callback = function(v)
+            if v then
+                AutoSellFruit = true
+                while AutoSellFruit do
+                        task.wait(1)
+                        ReplicatedStorage:WaitForChild("GlobalUsedRemotes"):WaitForChild("SellItem"):FireServer("Bomu Bomu Devil Fruit")
+                        ReplicatedStorage:WaitForChild("GlobalUsedRemotes"):WaitForChild("SellItem"):FireServer("Mochi Mochi Devil Fruit")
+                        ReplicatedStorage:WaitForChild("GlobalUsedRemotes"):WaitForChild("SellItem"):FireServer("Bari Bari Devil Fruit")
+                    end
+            else
+                AutoSellFruit = false
             end
         end
     })
@@ -583,10 +678,10 @@ if game.PlaceId == 8534845015 then
             end
         end
     })
-    GroupBox.Telp:AddDropdown("传送角色",{
+    GroupBox.Telp:AddDropdown("传送NPC",{
         Values = {"五条", "宿傩","夏油杰","每日任务点","仓库","购买","高速婆婆","胡萝卜女孩","千叶"},
         Default = "",
-        Text = "传送角色",
+        Text = "传送NPC",
         AllowNull = true,
         Callback = function(v)
             if v == "五条" then
@@ -610,6 +705,7 @@ if game.PlaceId == 8534845015 then
             end
         end
     })
+
     GroupBox.KillAnim:AddToggle("击杀动画(Cash)",{
         Text = "击杀动画抽奖(Cash)",
         Default = false,
@@ -663,7 +759,6 @@ if game.PlaceId == 8534845015 then
         Numeric = true,
         Placeholder = "输入数字",
         Callback = function(Value)
-            print("RollTime = " .. Value)
             RollTime = Value
         end
     })
@@ -752,18 +847,17 @@ if game.PlaceId == 8534845015 then
         Numeric = true,
         Placeholder = "输入数字",
         Callback = function(Value)
-            print("等待时间 = " .. Value)
             MasteryTime = Value
         end
     })
-    GroupBox.PlayerData:AddButton("更新数据",{
+    local Visiblefalse = GroupBox.PlayerData:AddButton("更新数据",{
             Text = "更新数据",
             Func = function()
+                Label.PlayerName:SetText("玩家名字: "..LocalPlayer.Name)
                 Label.Mastery:SetText("玩家精通: "..LocalPlayer.Data.Mastery.Value)
                 Label.Token:SetText("玩家红币: "..LocalPlayer.Data.Token.Value)
                 Label.Fingers:SetText("玩家手指: "..LocalPlayer.Data.Fingers.Value)
                 Label.Cash:SetText("玩家马内: "..LocalPlayer.Data.Cash.Value)
-                Label.Soul:SetText("玩家灵魂: "..LocalPlayer.Data.Soul.Value)
                 Label.Worth:SetText("玩家荣誉: "..LocalPlayer.Data.Worth.Value)
                 Label.BP:SetText("玩家BP: "..LocalPlayer.Data.BP.Value)
                 Label.Breakthrough:SetText("玩家突破: "..LocalPlayer.Data.Breakthrough.Value)
@@ -774,21 +868,25 @@ if game.PlaceId == 8534845015 then
         Default = false,
         Callback =function(v)
             if v then
+            Label.PlayerName:SetVisible(false)
             Label.Mastery:SetVisible(false)
             Label.Token:SetVisible(false)
             Label.Fingers:SetVisible(false)
             Label.Cash:SetVisible(false)
-            Label.Soul:SetVisible(false)
             Label.Worth:SetVisible(false)
+            Label.Breakthrough:SetVisible(false)
             Label.BP:SetVisible(false)
+            Visiblefalse:SetVisible(false)
             else
+            Label.PlayerName:SetVisible(true)
             Label.Mastery:SetVisible(true)
             Label.Token:SetVisible(true)
             Label.Fingers:SetVisible(true)
             Label.Cash:SetVisible(true)
-            Label.Soul:SetVisible(true)
             Label.Worth:SetVisible(true)
             Label.BP:SetVisible(true)
+            Label.Breakthrough:SetVisible(true)
+            Visiblefalse:SetVisible(true)
             end
         end
     })
@@ -839,14 +937,15 @@ if game.PlaceId == 8534845015 then
     SaveManager:SetLibrary(Library)
     SaveManager:IgnoreThemeSettings()
     SaveManager:SetIgnoreIndexes({ "菜单按钮" })
-    ThemeManager:SetFolder("SS")
-    SaveManager:SetFolder("ssScript/SSSS-game")
-    SaveManager:SetSubFolder("SS-place") 
+    ThemeManager:SetFolder("大厅/themes")
+    SaveManager:SetFolder("大厅/SS-game")
+    SaveManager:SetSubFolder("SS-数据") 
     SaveManager:BuildConfigSection(Tab["设置"])
     ThemeManager:ApplyToTab(Tab["设置"])
     SaveManager:LoadAutoloadConfig()
+    Notification:ChangeTitle("灵构")
+    Notification:ChangeDescription("享受脚本")
 else
-    local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/deividcomsono/Obsidian/refs/heads/main/Library.lua"))()
     Library:Notify({
         Title = "错误警告: ",
         Description = "请在正确的游戏内使用",
