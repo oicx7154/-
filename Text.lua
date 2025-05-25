@@ -1,7 +1,8 @@
+local Key = "Key"
 getgenv().Key = ""
 if not getgenv().Key or getgenv().Key == "" then
     game.Players.LocalPlayer:kick("请在脚本中填写Key")
-elseif getgenv().Key ~= "Key" then
+elseif getgenv().Key == Key then
     local ex = identifyexecutor()
     print(ex)
 end
