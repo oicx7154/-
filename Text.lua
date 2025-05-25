@@ -115,4 +115,5 @@ if response == trueData and getgenv().Key == Key then
     Description = "已复制卡密链接",
     Time = 10
     })
+	setclipboard(KeyGuardLibrary.getLink())
     end
