@@ -1,10 +1,8 @@
-local Key = "Key"
-getgenv().Key = ""
-if not getgenv().Key or getgenv().Key == "" then
-    game.Players.LocalPlayer:kick("请在脚本中填写Key")
-elseif getgenv().Key == Key then
+if getgenv().Key == "Key" then
     local ex = identifyexecutor()
-    print(ex)
+    print("注入器: " .. ex)
+else
+    game.Players.LocalPlayer:Kick("请在脚本中设置Key")
 end
 local UserInputService = game:GetService("UserInputService")
 local HttpService = game:GetService("HttpService")
