@@ -47,14 +47,24 @@ local response = KeyGuardLibrary.validateDefaultKey(Key) or KeyGuardLibrary.vali
 	DoesWrap = true,
 	Size = 16,
     }) 
-    Tabs.Key:AddKeyBox(Key, function(Success, ReceivedKey)
-	print("Expected Key: Banana - Received Key:", ReceivedKey, "| Success:", Success)
+    Tab["卡密"]:AddKeyBox(Key, function(Success, ReceivedKey)
 	Library:Notify({
-		Title = "Expected Key: Banana",
-		Description = "Received Key: " .. ReceivedKey .. "\nSuccess: " .. tostring(Success),
+		Title = "验证成功",
+		Description = "您的卡密是: " .. ReceivedKey .. "\nSuccess: " .. tostring(Success),
 		Time = 4,
 	})
     end)
+    Tab["卡密"]:AddButton({
+		Text = "获取卡密链接",
+		Func = function()
+	Library:Notify({
+	    Title = "灵构",
+	    Description = "已复制卡密链接",
+	    Time = 10
+	})
+	setclipboard(KeyGuardLibrary.getLink())
+	end
+    end})
     local MenuGroup = Tab["设置"]:AddLeftGroupbox("菜单")
     MenuGroup:AddToggle("按键绑定界面", {
         Default = Library.KeybindFrame.Visible,
@@ -108,11 +118,3 @@ local response = KeyGuardLibrary.validateDefaultKey(Key) or KeyGuardLibrary.vali
     SaveManager:BuildConfigSection(Tab["设置"])
     ThemeManager:ApplyToTab(Tab["设置"])
     SaveManager:LoadAutoloadConfig()
-    else
-        Library:Notify({
-    Title = "卡密错误",
-    Description = "已复制卡密链接",
-    Time = 10
-    })
-	setclipboard(KeyGuardLibrary.getLink())
-    end
