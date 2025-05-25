@@ -11,7 +11,6 @@ KeyGuardLibrary.Set({
 })
 local Key = ""
 local response = KeyGuardLibrary.validateDefaultKey(Key) or KeyGuardLibrary.validatePremiumKey(Key)
-if response == trueData and getgenv().Key == Key then
     local UserInputService = game:GetService("UserInputService")
     local Players = game:GetService("Players")
     local ReplicatedStorage = game:GetService("ReplicatedStorage")
