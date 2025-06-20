@@ -1,5 +1,5 @@
 return {
-Title = "灵构定制",
+Title = "灵构脚本",
 announcements = {"公告一: ",
   }
 }
