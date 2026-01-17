@@ -11,12 +11,12 @@ end)
 
 local Aiming = {
     FOV = 60,
-    NPCs = false,
-    Players = false,
-    Enabled = false,
-    ShowFOV = false,
-    AimTracer = false,
-    DynamicFOV = false,
+    NPCs = true,
+    Players = true,
+    Enabled = true,
+    ShowFOV = true,
+    AimTracer = true,
+    DynamicFOV = true,
     FOVColor = Color3.fromRGB(255, 255, 255),
     AimTracerColor = Color3.fromRGB(255, 0, 0),
     CurrentTarget = nil
