@@ -1,0 +1,32 @@
+[
+  {
+    "Name": "Hunter脚本",
+    "File": "Hunter.lua",
+    "PlaceIds": [72992062125248],
+    "Teleport": 72992062125248
+  },
+  {
+    "Name": "樱花摊位脚本",
+    "File": "%E6%A8%B1%E8%8A%B1%E6%91%8A%E4%BD%8D.lua",
+    "PlaceIds": [8534845015,74371530193003,3256689155,131650717298903],
+    "Teleport": 8534845015
+  },
+  {
+    "Name": "种植花园脚本",
+    "File": "%E7%A7%8D%E6%A4%8D%E8%8A%B1%E5%9B%AD.lua",
+    "PlaceIds": [126884695634066],
+    "Teleport": 126884695634066
+  },
+  {
+    "Name": "被遗弃脚本",
+    "File": "Forsaken.lua",
+    "PlaceIds": [18687417158],
+    "Teleport": 18687417158
+  },
+  {
+    "Name": "黑暗欺骗脚本",
+    "File": "%E9%BB%91%E6%9A%97%E6%AC%BA%E9%AA%97.lua",
+    "PlaceIds": [7229780065],
+    "Teleport": 7229780065
+  }
+]
