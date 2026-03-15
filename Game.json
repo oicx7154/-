@@ -40,5 +40,11 @@
     "File": "无标题近战RNG.lua",
     "PlaceIds": [99248392277037],
     "Teleport": 99248392277037,
+  },
+  {
+    "Name": "Dungeon Leveling Origin",
+    "File": "Dungeon Leveling Origin.lua",
+    "PlaceIds" [85809786409351],
+    "Teleport": 85809786409351,
   }
 ]
