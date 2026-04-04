@@ -1,5 +1,5 @@
 return {
 Title = "灵构脚本",
-announcements = {"2026/3/15\n更新/Update:\n新增游戏/New Game:\n无标题近战RNG\nDungeon Leveling Origin",
+announcements = {"2026/4/4\n更新/Update:\n新增游戏/New Game:\n撕咬之夜\Bite By Night",
   }
 }
