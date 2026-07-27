@@ -58,5 +58,11 @@
     "File": "Reign Fall.lua",
     "PlaceIds" [11765763028],
     "Teleport": 11765763028
+  },
+  {
+    "Name": "储存猎人",
+    "File": "储存猎人.lua",
+    "PlaceIds" [98800969324557],
+    "Teleport": 98800969324557
   }
 ]
