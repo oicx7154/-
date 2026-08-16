@@ -65,4 +65,10 @@
     "PlaceIds" [98800969324557],
     "Teleport": 98800969324557
   }
+  {
+    "Name": "RUNAWAYS",
+    "File": "RUNAWAYS.lua",
+    "PlaceIds" [118418618261207,117311404196294],
+    "Teleport": 118418618261207
+  }
 ]
