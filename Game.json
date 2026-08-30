@@ -70,5 +70,11 @@
     "File": "RUNAWAYS.lua",
     "PlaceIds" [118418618261207,117311404196294],
     "Teleport": 118418618261207
+  },
+  {
+    "Name": "Ohio",
+    "File": "Ohio.lua",
+    "PlaceIds" [7239319209],
+    "Teleport": 7239319209
   }
 ]
