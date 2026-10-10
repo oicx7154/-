@@ -77,4 +77,9 @@
     "PlaceIds" [7239319209],
     "Teleport": 7239319209
   }
+  {
+    "Name": "通用",
+    "File": "通用.lua",
+    "PlaceIds" [],
+  }
 ]
