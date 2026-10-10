@@ -80,6 +80,6 @@
   {
     "Name": "通用",
     "File": "通用.lua",
-    "PlaceIds" [],
+    "PlaceIds" []
   }
 ]
