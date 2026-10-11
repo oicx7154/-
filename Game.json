@@ -8,7 +8,7 @@
   {
     "Name": "樱花摊位脚本",
     "File": "%E6%A8%B1%E8%8A%B1%E6%91%8A%E4%BD%8D.lua",
-    "PlaceIds": [8534845015,74371530193003,3256689155,131650717298903],
+    "PlaceIds": [8534845015, 74371530193003, 3256689155, 131650717298903],
     "Teleport": 8534845015
   },
   {
@@ -26,7 +26,7 @@
   {
     "Name": "黑暗欺骗脚本",
     "File": "%E9%BB%91%E6%9A%97%E6%AC%BA%E9%AA%97.lua",
-    "PlaceIds": [125591428878906,95211388186571,102629288441708,129556108844772],
+    "PlaceIds": [125591428878906, 95211388186571, 102629288441708, 129556108844772],
     "Teleport": 136431686349723
   },
   {
@@ -44,42 +44,42 @@
   {
     "Name": "Dungeon Leveling Origin",
     "File": "Dungeon Leveling Origin.lua",
-    "PlaceIds" [85809786409351],
+    "PlaceIds": [85809786409351],
     "Teleport": 85809786409351
   },
   {
     "Name": "撕咬之夜",
     "File": "Bite By Night.lua",
-    "PlaceIds" [70845479499574],
+    "PlaceIds": [70845479499574],
     "Teleport": 70845479499574
   },
   {
     "Name": "Reign Fall",
     "File": "Reign Fall.lua",
-    "PlaceIds" [11765763028],
+    "PlaceIds": [11765763028],
     "Teleport": 11765763028
   },
   {
     "Name": "储存猎人",
     "File": "储存猎人.lua",
-    "PlaceIds" [98800969324557],
+    "PlaceIds": [98800969324557],
     "Teleport": 98800969324557
   },
   {
     "Name": "RUNAWAYS",
     "File": "RUNAWAYS.lua",
-    "PlaceIds" [118418618261207,117311404196294],
+    "PlaceIds": [118418618261207, 117311404196294],
     "Teleport": 118418618261207
   },
   {
     "Name": "Ohio",
     "File": "Ohio.lua",
-    "PlaceIds" [7239319209],
+    "PlaceIds": [7239319209],
     "Teleport": 7239319209
-  }
+  },
   {
     "Name": "通用",
     "File": "通用.lua",
-    "PlaceIds" []
+    "PlaceIds": []
   }
 ]
